@@ -1,13 +1,20 @@
 {
-  "name": "Provolone Piccante",
-  "short_name": "Provola",
-  "icons": [{
-    "src": "icons/icon.jpg",
-    "sizes": "128x128",
-    "type": "image/jpg"
-  }],
-  "start_url": "/Tic-Tac-Toe-PWA/",
-  "scope": "/Tic-Tac-Toe-PWA/",
+  "name": "pwa_test",
+  "short_name": "pwa",
+  "icons": [
+    {
+      "src": "icons/icon2.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon.png",
+      "sizes": "880x371",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/pwaTest/",
+  "scope": "/pwaTest/",
   "display": "standalone",
   "background_color": "#3E4EB8",
   "theme_color": "#2F3BA2"

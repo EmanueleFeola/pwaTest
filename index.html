@@ -1,44 +1,57 @@
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="it">
 
 <head>
-  <meta charset="utf-8" />
-  <title>Display Webcam Stream</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#317EFB" />
 
-  <link rel="manifest" href="./manifest.json" />
+    <title>Display Webcam Stream</title>
 
-  <!-- Add to home screen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  <meta name="apple-mobile-web-app-title" content="Simon Game" />
-  <link rel="apple-touch-icon" href="icons/icon.jpg" />
-  <!-- Tile icon for Windows -->
-  <meta name="msapplication-TileImage" content="icons/icon.jpg" />
-  <meta name="msapplication-TileColor" content="#2F3BA2" />
+    <meta name=description content="pwa test page">
+    <!-- Add to home screen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Simon Game" />
+    <link rel="apple-touch-icon" href="icons/icon.jpg" />
+    <!-- Tile icon for Windows -->
+    <meta name="msapplication-TileImage" content="icons/icon.jpg" />
+    <meta name="msapplication-TileColor" content="#2F3BA2" />
 
-  <style>
-    #container {
-      margin: 0px auto;
-      width: 500px;
-      height: 375px;
-      border: 10px #333 solid;
-    }
+    <style>
+        body {
+            font-size: 35px;
+            padding: 15px;
+        }
 
-    #videoElement {
-      width: 500px;
-      height: 375px;
-      background-color: #666;
-    }
-  </style>
+        #container {
+            margin: 0px auto;
+            width: 500px;
+            height: 375px;
+            border: 10px #333 solid;
+        }
+
+        #videoElement {
+            width: 500px;
+            height: 375px;
+            background-color: #666;
+        }
+    </style>
+
+    <link rel="manifest" href="manifest.json" />
+
 </head>
-
-<img>
-<div id="container">
-  <video autoplay="true" id="videoElement"></video>
-</div>
-
-<img src="icon/icon.jpg"></img>
+<body>
+    <div id="container">
+        <video autoplay="true" id="videoElement"></video>
+    </div>
+    <p>L immagine dovrebbe venire messa nella cache del proxy js</p>
+    <p>Provare senza connessione a internet per vedere se viene visualizzata comunque</p>
+    <img alt="" style="width: 300px; height: 300px;" src="icons/test.png">
+    <button id="notifButton">Test Push Notifications</button>
+    <button id="installButton">Aggiungi alla schermata home</button>
 </body>
+
 <script src="script.js"></script>
 
 </html>

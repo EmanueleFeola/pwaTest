@@ -1,11 +1,12 @@
-// inizio configurazione pwa
+﻿// inizio configurazione pwa
 
 const alertBox = document.getElementById("updateNotification");
 const updateButton = document.getElementById("updateButton");
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('sw.js').then(function (registration) {
+      navigator.serviceWorker.register('/pwaTest/sw.js', { scope: '/' }).then(function (registration) {
+      //navigator.serviceWorker.register('js/sw.js').then(function (registration) {
       //check if page was loaded via service worker
       if (!navigator.serviceWorker.controller) {
         return;
@@ -64,6 +65,59 @@ navigator.serviceWorker.addEventListener("controllerchange", function () {
 
 // fine configurazione pwa
 
+// push notifications
+document.getElementById("notifButton").addEventListener('click', function (e) {
+    Notification.requestPermission().then(function (result) {
+        if (result === 'granted') {
+            showNotification();
+        }
+    });
+});
+
+function showNotification() {
+    Notification.requestPermission(function (result) {
+        if (result === 'granted') {
+            navigator.serviceWorker.ready.then(function (registration) {
+                registration.showNotification('Vibration Sample', {
+                    body: 'Buzz! Buzz!',
+                    icon: 'icons/test.png',
+                    //vibrate: [200, 100, 200, 100, 200, 100, 200],
+                    tag: 'vibration-sample'
+                });
+            });
+        }
+    });
+}
+
+// fine push notifications
+
+// start install button
+
+var defferePrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+});
+
+installButton.addEventListener('click', (e) => {
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+        } else {
+            console.log('User dismissed the install prompt');
+        }
+    })
+});
+
+// end install button
+
+
 var video = document.querySelector("#videoElement");
 
 if (navigator.mediaDevices.getUserMedia) {
@@ -77,3 +131,4 @@ if (navigator.mediaDevices.getUserMedia) {
       console.log("Something went wrong!");
     });
 }
+
